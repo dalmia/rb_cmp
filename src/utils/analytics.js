@@ -75,7 +75,9 @@ function isGtagAvailable() {
   if (!isProductionDomain()) {
     return false
   }
-  console.log('isGtagAvailable:1', typeof window !== 'undefined' && typeof window.gtag === 'function');
+  console.log('isGtagAvailable:1', typeof window !== 'undefined')
+  console.log('isGtagAvailable:2', typeof window.gtag === 'function');
+  console.log('isGtagAvailable:3', typeof window !== 'undefined' && typeof window.gtag === 'function');
   return typeof window !== 'undefined' && typeof window.gtag === 'function'
 }
 
