@@ -60,7 +60,7 @@ function isProductionDomain() {
   }
   
   const hostname = window.location.hostname
-  
+  console.log('Checking if on production domain:', hostname);
   // Only track on production domain (solveninja.org)
   // Exclude dev instances (dev.solveninja.org, localhost, etc.)
   return hostname === 'solveninja.org' || hostname === 'www.solveninja.org'
