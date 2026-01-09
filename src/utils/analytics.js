@@ -154,11 +154,11 @@ export function trackNavigation(linkText, destination, options = {}) {
  * @param {string} routeInfo.path - Route path (if object)
  */
 export function trackPageView(pagePath, routeInfo = null) {
-
+  console.log('Tracking page view from analytics for:1', pagePath);
   if (!isGtagAvailable()) {
     return
   }
-  console.log('Tracking page view  from analytics for:', pagePath);
+  console.log('Tracking page view  from analytics for:2', pagePath);
   try {
     // Extract route name and path from routeInfo
     let routeName = null
@@ -172,12 +172,12 @@ export function trackPageView(pagePath, routeInfo = null) {
     // Generate proper page title and screen class
     const pageTitle = getPageTitle(routeName, pagePath)
     const screenClass = getScreenClass(routeName, pagePath)
-
+    console.log('Tracking page view  from analytics for:3', pagePath);
     // Update document.title so Google Analytics picks it up
     if (typeof document !== 'undefined') {
       document.title = pageTitle
     }
-
+    console.log('Tracking page view  from analytics for:4', pagePath);
     const config = {
       page_path: pagePath,
       page_title: pageTitle,
@@ -185,7 +185,9 @@ export function trackPageView(pagePath, routeInfo = null) {
     }
     console.log('Tracking page view with config:', config);
     window.gtag('config', GA_TRACKING_ID, config)
-  } catch (error) {
+    console.log('Tracking page view  from analytics for:5', pagePath);
+    } catch (error) {
+    console.log('Tracking page view  from analytics for:6', pagePath);
     console.error('Error tracking page view:', error)
   }
 }
