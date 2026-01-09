@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Record an action | SolveNinja",
+  title: "User Profile",
   description: "SolveNinja is a platform for local, community-driven problem solving.",
 };
 
