@@ -103,7 +103,7 @@ export function trackEvent(eventName, eventParams = {}) {
       event_label: eventParams.event_label || eventName,
     })
   } catch (error) {
-    // console.error('Error tracking event:', error)
+    console.error('Error tracking event:', error)
   }
 }
 
@@ -186,7 +186,7 @@ export function trackPageView(pagePath, routeInfo = null) {
     
     window.gtag('config', GA_TRACKING_ID, config)
   } catch (error) {
-    // console.error('Error tracking page view:', error)
+    console.error('Error tracking page view:', error)
   }
 }
 
