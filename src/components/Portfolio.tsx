@@ -70,9 +70,8 @@ export default function Portfolio({ username, viewOnly }: { username: string, vi
                 if (!response.ok) {
                     throw new Error('Failed to fetch user profile');
                 }
-                console.log('Response received:', response);
                 const userData: UserProfile = await response.json();
-                console.log('User data received:', userData);
+                
                 setUserProfile(userData);
                 setExpertReviews(userData.expert_reviews || []);
 

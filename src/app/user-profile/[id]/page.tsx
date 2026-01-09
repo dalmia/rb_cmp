@@ -18,6 +18,7 @@ export default function PortfolioPage({ params }: { params: Promise<{ id: string
     // Track page view when profile ID is available
     useEffect(() => {
         if (id) {
+            console.log('Tracking page view for user profile:', id);
             const pagePath = `/user-profile/${id}`;
             trackPageView(pagePath, {
                 name: 'User Profile',
