@@ -183,7 +183,7 @@ export function trackPageView(pagePath, routeInfo = null) {
       page_title: pageTitle,
       screen_class: screenClass,
     }
-    
+    console.log('Tracking page view with config:', config);
     window.gtag('config', GA_TRACKING_ID, config)
   } catch (error) {
     console.error('Error tracking page view:', error)
