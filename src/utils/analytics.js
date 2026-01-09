@@ -158,7 +158,7 @@ export function trackPageView(pagePath, routeInfo = null) {
   if (!isGtagAvailable()) {
     return
   }
-
+  console.log('Tracking page view  from analytics for:', pagePath);
   try {
     // Extract route name and path from routeInfo
     let routeName = null
