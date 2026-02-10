@@ -14,6 +14,7 @@ import { Action, UserProfile, ApiSkill } from "@/types";
 import ContributionHeatmap from "@/components/ContributionHeatmap";
 import { ExpertReview } from "@/types";
 import ExpertReviewCard from "@/components/ExpertReviewCard";
+import { trackButtonClick } from "@/utils/analytics";
 
 
 export default function Portfolio({ username, viewOnly }: { username: string, viewOnly: boolean }) {
@@ -69,9 +70,8 @@ export default function Portfolio({ username, viewOnly }: { username: string, vi
                 if (!response.ok) {
                     throw new Error('Failed to fetch user profile');
                 }
-                console.log('Response received:', response);
                 const userData: UserProfile = await response.json();
-                console.log('User data received:', userData);
+                
                 setUserProfile(userData);
                 setExpertReviews(userData.expert_reviews || []);
 
@@ -389,7 +389,14 @@ export default function Portfolio({ username, viewOnly }: { username: string, vi
                                 {!viewOnly && (
                                   <div className="mb-4">
                                     <button
-                                      onClick={() => window.location.href = "/record-action"}
+                                      onClick={() => {
+                                        trackButtonClick('Add Action', {
+                                          location: 'user_profile',
+                                          action: 'navigate_to_record_action',
+                                          page: '/user-profile'
+                                        });
+                                        window.location.href = "/record-action";
+                                      }}
                                       className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors text-sm font-medium cursor-pointer w-full justify-center"
                                     >
                                       Add action

@@ -3,6 +3,7 @@
 import { useAuth } from '@/lib/auth';
 import Portfolio from '@/components/Portfolio';
 import { useState, useEffect } from 'react';
+import { trackPageView } from '@/utils/analytics';
 
 export default function PortfolioPage({ params }: { params: Promise<{ id: string }> }) {
     const [id, setId] = useState<string>('');
@@ -13,6 +14,18 @@ export default function PortfolioPage({ params }: { params: Promise<{ id: string
             setId(resolvedId);
         });
     }, [params]);
+
+    // Track page view when profile ID is available
+    useEffect(() => {
+        if (id) {
+            console.log('Tracking page view for user profile:', id);
+            const pagePath = `/user-profile/${id}`;
+            trackPageView(pagePath, {
+                name: 'User Profile',
+                path: pagePath
+            });
+        }
+    }, [id]);
 
     useEffect(() => {
         if (!isLoading && id === 'me') {
