@@ -126,24 +126,24 @@ export default function PortfolioPage({ params }: { params: Promise<{ id: string
                                     // Navigate to home page
                                     window.location.href = `${process.env.NEXT_PUBLIC_FRAPPE_BASE_URL}/`;
                                 }}
-                                className="text-gray-700 hover:text-blue-600 transition-colors text-sm font-medium cursor-pointer"
+                                className="btn btn-primary"
                             >
-                                Explore the Solve Ninja World 
+                                Back to Home
                             </button>
                             {/* Show Sign out button if user is authenticated */}
                             {isAuthenticated && (
                                 <button
                                     onClick={handleSignOut}
-                                    className="text-gray-700 hover:text-red-600 transition-colors text-sm font-medium cursor-pointer"
+                                    className="btn btn-secondary"
                                 >
-                                    Sign out
+                                    Logout
                                 </button>
                             )}
                             {/* Only show Login button if user is not authenticated */}
                             {!isAuthenticated && (
                                 <button
                                     onClick={redirectToLogin}
-                                    className="text-gray-700 hover:text-blue-600 transition-colors text-sm font-medium cursor-pointer"
+                                    className="btn btn-primary"
                                 >
                                     Login
                                 </button>
